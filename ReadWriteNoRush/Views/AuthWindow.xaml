@@ -1,0 +1,61 @@
+﻿<Window x:Class="ReadWriteNoRush.Views.AuthWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Читай, Пиши и не спиши" Height="450" Width="400"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+
+    <Grid Background="#F5F5F5">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
+
+            <TextBlock Text="Читай, Пиши и не спиши" FontSize="18" FontWeight="Bold"
+                       HorizontalAlignment="Center" Margin="0,0,0,30" Foreground="#333"/>
+
+            <!-- Панель входа -->
+            <StackPanel x:Name="PanelSignIn">
+                <TextBlock Text="Логин" Margin="0,0,0,4"/>
+                <TextBox x:Name="TxtLogin" Height="32" Padding="6"/>
+
+                <TextBlock Text="Пароль" Margin="0,12,0,4"/>
+                <PasswordBox x:Name="TxtPassword" Height="32" Padding="6"/>
+
+                <Button Content="Войти" Height="36" Margin="0,20,0,0"
+                        Background="#4A90D9" Foreground="White" FontWeight="Bold"
+                        BorderThickness="0" Cursor="Hand"
+                        Click="BtnSignIn_Click"/>
+
+                <TextBlock Margin="0,12,0,0" HorizontalAlignment="Center">
+                    <Hyperlink Click="SwitchToRegister_Click">Нет аккаунта? Зарегистрироваться</Hyperlink>
+                </TextBlock>
+            </StackPanel>
+
+            <!-- Панель регистрации -->
+            <StackPanel x:Name="PanelSignUp" Visibility="Collapsed">
+                <TextBlock Text="Логин" Margin="0,0,0,4"/>
+                <TextBox x:Name="TxtRegLogin" Height="32" Padding="6"/>
+
+                <TextBlock Text="Отображаемое имя" Margin="0,12,0,4"/>
+                <TextBox x:Name="TxtRegName" Height="32" Padding="6"/>
+
+                <TextBlock Text="Email" Margin="0,12,0,4"/>
+                <TextBox x:Name="TxtRegEmail" Height="32" Padding="6"/>
+
+                <TextBlock Text="Пароль" Margin="0,12,0,4"/>
+                <PasswordBox x:Name="TxtRegPassword" Height="32" Padding="6"/>
+
+                <Button Content="Зарегистрироваться" Height="36" Margin="0,20,0,0"
+                        Background="#4A90D9" Foreground="White" FontWeight="Bold"
+                        BorderThickness="0" Cursor="Hand"
+                        Click="BtnSignUp_Click"/>
+
+                <TextBlock Margin="0,12,0,0" HorizontalAlignment="Center">
+                    <Hyperlink Click="SwitchToLogin_Click">Уже есть аккаунт? Войти</Hyperlink>
+                </TextBlock>
+            </StackPanel>
+
+            <TextBlock x:Name="TxtError" Foreground="Red" HorizontalAlignment="Center"
+                       Margin="0,10,0,0" TextWrapping="Wrap"/>
+
+        </StackPanel>
+    </Grid>
+</Window>
