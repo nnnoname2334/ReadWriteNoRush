@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1d9d72b27a0d42139894a818b26ed8ea" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="ReadWriteNoRushModel.Books" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadWriteNoRushModel.Complaints" Width="1.5" PointX="7.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadWriteNoRushModel.Genres" Width="1.5" PointX="7.625" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadWriteNoRushModel.ReadingLists" Width="1.5" PointX="10.5" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadWriteNoRushModel.ReadingListStatuses" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadWriteNoRushModel.Reviews" Width="1.5" PointX="5.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadWriteNoRushModel.RoleApplications" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadWriteNoRushModel.Roles" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadWriteNoRushModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadWriteNoRushModel.UnfreezeApplications" Width="1.5" PointX="11.375" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReadWriteNoRushModel.Users" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <AssociationConnector Association="ReadWriteNoRushModel.FK_Books_Author" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadWriteNoRushModel.FK_Complaints_Books" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadWriteNoRushModel.FK_ReadingLists_Books" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadWriteNoRushModel.FK_Reviews_Books" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadWriteNoRushModel.FK_UnfreezeApps_Books" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadWriteNoRushModel.FK_Complaints_Reviews" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadWriteNoRushModel.FK_Complaints_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadWriteNoRushModel.FK_ReadingLists_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadWriteNoRushModel.FK_ReadingLists_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadWriteNoRushModel.FK_Reviews_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadWriteNoRushModel.FK_RoleApplications_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadWriteNoRushModel.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadWriteNoRushModel.FK_UnfreezeApps_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ReadWriteNoRushModel.BookGenres" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
