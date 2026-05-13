@@ -95,6 +95,7 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\AuthService.cs" />
+    <Compile Include="Services\BookService.cs" />
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -112,6 +113,9 @@
     </Compile>
     <Compile Include="Views\AuthWindow.xaml.cs">
       <DependentUpon>AuthWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BookPage.xaml.cs">
+      <DependentUpon>BookPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CatalogPage.xaml.cs">
       <DependentUpon>CatalogPage.xaml</DependentUpon>
@@ -146,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AuthWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BookPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
