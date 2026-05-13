@@ -96,6 +96,8 @@
     </Compile>
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\BookService.cs" />
+    <Compile Include="Services\ComplaintService.cs" />
+    <Compile Include="Services\ReviewService.cs" />
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -122,6 +124,9 @@
     </Compile>
     <Compile Include="Views\FrozenPage.xaml.cs">
       <DependentUpon>FrozenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InputDialog.xaml.cs">
+      <DependentUpon>InputDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
@@ -162,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\FrozenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InputDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
