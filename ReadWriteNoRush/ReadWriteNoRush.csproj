@@ -97,6 +97,7 @@
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\BookService.cs" />
     <Compile Include="Services\ComplaintService.cs" />
+    <Compile Include="Services\ReadingListService.cs" />
     <Compile Include="Services\ReviewService.cs" />
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Model.tt</DependentUpon>

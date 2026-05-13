@@ -178,8 +178,9 @@ namespace ReadWriteNoRush.Views
 
         private void BtnComplainBook_Click(object sender, RoutedEventArgs e)
         {
-            var reason = Microsoft.VisualBasic.Interaction.InputBox(
-                "Укажите причину жалобы:", "Жалоба на книгу");
+            var dialog = new InputDialog("Укажите причину жалобы на книгу:");
+            if (dialog.ShowDialog() != true) return;
+            string reason = dialog.Answer;
             if (string.IsNullOrWhiteSpace(reason)) return;
 
             bool ok = ComplaintService.AddOnBook(AppSession.CurrentUser.UserId, _bookId, reason);
@@ -188,8 +189,9 @@ namespace ReadWriteNoRush.Views
 
         private void BtnComplainAuthor_Click(object sender, RoutedEventArgs e)
         {
-            var reason = Microsoft.VisualBasic.Interaction.InputBox(
-                "Укажите причину жалобы на автора:", "Жалоба на автора");
+            var dialog = new InputDialog("Укажите причину жалобы на автора:");
+            if (dialog.ShowDialog() != true) return;
+            string reason = dialog.Answer;
             if (string.IsNullOrWhiteSpace(reason)) return;
 
             // Жалоба на автора = жалоба на книгу с пометкой об авторе
@@ -201,8 +203,9 @@ namespace ReadWriteNoRush.Views
         private void BtnComplainReview_Click(object sender, RoutedEventArgs e)
         {
             int reviewId = (int)((Button)sender).Tag;
-            var reason = Microsoft.VisualBasic.Interaction.InputBox(
-                "Укажите причину жалобы:", "Жалоба на отзыв");
+            var dialog = new InputDialog("Укажите причину жалобы на комментарий:");
+            if (dialog.ShowDialog() != true) return;
+            string reason = dialog.Answer;
             if (string.IsNullOrWhiteSpace(reason)) return;
 
             bool ok = ComplaintService.AddOnReview(
