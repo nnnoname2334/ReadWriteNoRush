@@ -99,6 +99,7 @@
     <Compile Include="Services\ComplaintService.cs" />
     <Compile Include="Services\ReadingListService.cs" />
     <Compile Include="Services\ReviewService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
