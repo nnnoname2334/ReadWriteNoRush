@@ -238,6 +238,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\admin.png" />
+    <Resource Include="Assets\author.png" />
+    <Resource Include="Assets\catalog.png" />
+    <Resource Include="Assets\frozen.png" />
+    <Resource Include="Assets\list.png" />
+    <Resource Include="Assets\logout.png" />
+    <Resource Include="Assets\profile.png" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model.Context.cs</LastGenOutput>

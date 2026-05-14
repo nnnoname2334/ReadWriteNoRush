@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using ReadWriteNoRush.Helpers;
+using ReadWriteNoRush.Services;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using ReadWriteNoRush.Services;
 
 namespace ReadWriteNoRush.Views
 {
@@ -136,7 +137,22 @@ namespace ReadWriteNoRush.Views
 
                 card.Child = sp;
                 BooksPanel.Children.Add(card);
+
+                var btnAdd = new Button
+                {
+                    Content = "+ В список",
+                    Height = 28,
+                    Margin = new Thickness(0, 4, 0, 0),
+                    Background = new SolidColorBrush(Color.FromRgb(39, 174, 96)),
+                    Foreground = Brushes.White,
+                    BorderThickness = new Thickness(0),
+                    Cursor = Cursors.Hand,
+                    Tag = book.BookId
+                };
+                btnAdd.Click += BtnAddToList_Click;
+                sp.Children.Add(btnAdd);
             }
+
         }
 
         private void BtnOpen_Click(object sender, RoutedEventArgs e)
@@ -153,5 +169,29 @@ namespace ReadWriteNoRush.Views
 
         private void CmbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
             => ApplyFilters();
+
+        private void BtnAddToList_Click(object sender, RoutedEventArgs e)
+        {
+            int bookId = (int)((Button)sender).Tag;
+
+            var menu = new ContextMenu();
+            var statuses = Core.Context.ReadingListStatuses.ToList();
+
+            foreach (var s in statuses)
+            {
+                var item = new MenuItem { Header = s.StatusName, Tag = s.StatusId };
+                item.Click += (ms, me) =>
+                {
+                    int statusId = (int)((MenuItem)ms).Tag;
+                    ReadingListService.AddOrMove(
+                        AppSession.CurrentUser.UserId, bookId, statusId);
+                    MessageBox.Show("Книга добавлена в список «" +
+                        ((MenuItem)ms).Header + "».");
+                };
+                menu.Items.Add(item);
+            }
+
+            menu.IsOpen = true;
+        }
     }
 }

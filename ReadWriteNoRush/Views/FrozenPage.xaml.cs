@@ -1,28 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using ReadWriteNoRush.Helpers;
+using ReadWriteNoRush.Services;
 
 namespace ReadWriteNoRush.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для FrozenPage.xaml
-    /// </summary>
     public partial class FrozenPage : Page
     {
         public FrozenPage()
         {
             InitializeComponent();
+            TxtReason.Text = AppSession.IsFrozen
+                ? "Ваш аккаунт был заморожен администратором."
+                : "";
+        }
+
+        private void BtnUnfreeze_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new InputDialog("Укажите причину оспаривания:");
+            if (dialog.ShowDialog() != true) return;
+            string reason = dialog.Answer;
+            if (string.IsNullOrWhiteSpace(reason)) return;
+
+            bool ok = UserService.ApplyForUnfreeze(AppSession.CurrentUser.UserId, reason);
+            MessageBox.Show(ok
+                ? "Заявка отправлена. Ожидайте решения администратора."
+                : "У вас уже есть активная заявка на разморозку.");
         }
     }
 }
