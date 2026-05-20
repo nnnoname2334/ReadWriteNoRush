@@ -1,5 +1,6 @@
 ﻿using ReadWriteNoRush.Helpers;
 using ReadWriteNoRush.Services;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,6 +36,28 @@ namespace ReadWriteNoRush.Views
             TxtGenres.Text = "Жанры: " + string.Join(", ", _book.Genres.Select(g => g.GenreName));
             TxtContent.Text = _book.Content;
             TxtDesc.Text = _book.Description;
+            // Загрузка обложки
+            try
+            {
+                if (!string.IsNullOrEmpty(_book.CoverPath))
+                {
+                    var uri = new Uri($"pack://application:,,,/Assets/{_book.CoverPath}",
+                        UriKind.Absolute);
+                    ImgCover.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
+                }
+                else
+                {
+                    var uri = new Uri("pack://application:,,,/Assets/no_cover.png",
+                        UriKind.Absolute);
+                    ImgCover.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
+                }
+            }
+            catch
+            {
+                var uri = new Uri("pack://application:,,,/Assets/no_cover.png",
+                    UriKind.Absolute);
+                ImgCover.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
+            }
 
             double rating = BookService.GetAvgRating(_bookId);
             TxtRating.Text = rating > 0 ? $"⭐ {rating:F1} / 10" : "Нет оценок";

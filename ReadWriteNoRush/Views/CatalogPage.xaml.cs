@@ -1,5 +1,6 @@
 ﻿using ReadWriteNoRush.Helpers;
 using ReadWriteNoRush.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -72,7 +73,7 @@ namespace ReadWriteNoRush.Views
                 var card = new Border
                 {
                     Width = 160,
-                    Height = 220,
+                    Height = 280,
                     Margin = new Thickness(8),
                     Background = Brushes.White,
                     CornerRadius = new CornerRadius(8),
@@ -83,6 +84,25 @@ namespace ReadWriteNoRush.Views
                 };
 
                 var sp = new StackPanel { Margin = new Thickness(10) };
+
+                // Обложка
+                var img = new System.Windows.Controls.Image
+                {
+                    Height = 80,
+                    Stretch = System.Windows.Media.Stretch.UniformToFill,
+                    Margin = new Thickness(0, 0, 0, 8)
+                };
+                try
+                {
+                    if (!string.IsNullOrEmpty(book.CoverPath))
+                    {
+                        var uri = new Uri($"pack://application:,,,/Assets/{book.CoverPath}",
+                            UriKind.Absolute);
+                        img.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
+                    }
+                }
+                catch { }
+                sp.Children.Add(img);
 
                 sp.Children.Add(new TextBlock
                 {
@@ -109,7 +129,6 @@ namespace ReadWriteNoRush.Views
                     Margin = new Thickness(0, 6, 0, 0)
                 });
 
-                // Жанры
                 var genres = string.Join(", ", book.Genres.Select(g => g.GenreName));
                 sp.Children.Add(new TextBlock
                 {
@@ -120,12 +139,11 @@ namespace ReadWriteNoRush.Views
                     Margin = new Thickness(0, 4, 0, 0)
                 });
 
-                // Кнопка "Открыть"
                 var btnOpen = new Button
                 {
                     Content = "Открыть",
                     Height = 28,
-                    Margin = new Thickness(0, 10, 0, 0),
+                    Margin = new Thickness(0, 8, 0, 0),
                     Background = new SolidColorBrush(Color.FromRgb(74, 144, 217)),
                     Foreground = Brushes.White,
                     BorderThickness = new Thickness(0),
@@ -134,9 +152,6 @@ namespace ReadWriteNoRush.Views
                 };
                 btnOpen.Click += BtnOpen_Click;
                 sp.Children.Add(btnOpen);
-
-                card.Child = sp;
-                BooksPanel.Children.Add(card);
 
                 var btnAdd = new Button
                 {
@@ -151,8 +166,10 @@ namespace ReadWriteNoRush.Views
                 };
                 btnAdd.Click += BtnAddToList_Click;
                 sp.Children.Add(btnAdd);
-            }
 
+                card.Child = sp; // <- теперь в самом конце
+                BooksPanel.Children.Add(card);
+            }
         }
 
         private void BtnOpen_Click(object sender, RoutedEventArgs e)

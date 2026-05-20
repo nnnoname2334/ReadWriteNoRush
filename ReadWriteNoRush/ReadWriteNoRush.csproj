@@ -245,6 +245,15 @@
     <Resource Include="Assets\list.png" />
     <Resource Include="Assets\logout.png" />
     <Resource Include="Assets\profile.png" />
+    <Resource Include="Assets\covers\bratya.jpg" />
+    <Resource Include="Assets\covers\idiot.jpg" />
+    <Resource Include="Assets\covers\master.jpg" />
+    <Resource Include="Assets\covers\prestuplenie.jpg" />
+    <Resource Include="Assets\covers\siyanie.jpg" />
+    <Resource Include="Assets\covers\sobache.jpg" />
+    <Resource Include="Assets\covers\tovarischi.jpg" />
+    <Resource Include="Assets\covers\zapad.jpg" />
+    <Resource Include="Assets\covers\zelenaya.jpg" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model.Context.cs</LastGenOutput>
