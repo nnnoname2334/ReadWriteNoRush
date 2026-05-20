@@ -40,8 +40,9 @@ namespace ReadWriteNoRush.Views
             {
                 if (!string.IsNullOrEmpty(_book.CoverPath))
                 {
-                    var uri = new Uri($"pack://application:,,,/Assets/{_book.CoverPath}",
-                        UriKind.Absolute);
+                    var uri = _book.CoverPath.StartsWith("http")
+                        ? new Uri(_book.CoverPath, UriKind.Absolute)
+                        : new Uri($"pack://application:,,,/Assets/{_book.CoverPath}", UriKind.Absolute);
                     ImgCover.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
                 }
                 else

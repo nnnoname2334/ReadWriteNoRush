@@ -96,8 +96,9 @@ namespace ReadWriteNoRush.Views
                 {
                     if (!string.IsNullOrEmpty(book.CoverPath))
                     {
-                        var uri = new Uri($"pack://application:,,,/Assets/{book.CoverPath}",
-                            UriKind.Absolute);
+                        var uri = book.CoverPath.StartsWith("http")
+                            ? new Uri(book.CoverPath, UriKind.Absolute)
+                            : new Uri($"pack://application:,,,/Assets/{book.CoverPath}", UriKind.Absolute);
                         img.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
                     }
                 }
