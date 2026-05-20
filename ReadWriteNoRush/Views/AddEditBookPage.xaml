@@ -25,6 +25,9 @@
                     <TextBox x:Name="TxtDesc" Height="70" Padding="8"
                              TextWrapping="Wrap" AcceptsReturn="True"
                              Margin="0,0,0,12"/>
+                    
+                    <TextBlock Text="Ссылка на обложку" Margin="0,0,0,4"/>
+                    <TextBox x:Name="TxtCover" Height="34" Padding="8" Margin="0,0,0,12"/>
 
                     <TextBlock Text="Текст книги" Margin="0,0,0,4"/>
                     <TextBox x:Name="TxtContent" Height="120" Padding="8"

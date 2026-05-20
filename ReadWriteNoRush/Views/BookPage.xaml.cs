@@ -263,5 +263,18 @@ namespace ReadWriteNoRush.Views
             ReviewService.Freeze(reviewId);
             LoadReviews();
         }
+        private void BtnRead_Click(object sender, RoutedEventArgs e)
+        {
+            if (PanelContent.Visibility == Visibility.Collapsed)
+            {
+                PanelContent.Visibility = Visibility.Visible;
+                BtnRead.Content = "✕ Скрыть текст";
+            }
+            else
+            {
+                PanelContent.Visibility = Visibility.Collapsed;
+                BtnRead.Content = "📖 Читать книгу";
+            }
+        }
     }
 }

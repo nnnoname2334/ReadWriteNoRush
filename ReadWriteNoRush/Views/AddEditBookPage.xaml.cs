@@ -49,7 +49,7 @@ namespace ReadWriteNoRush.Views
             TxtTitle.Text = _book.Title;
             TxtDesc.Text = _book.Description;
             TxtContent.Text = _book.Content;
-
+            TxtCover.Text = _book.CoverPath ?? "";
             var bookGenreIds = _book.Genres.Select(g => g.GenreId).ToList();
             foreach (var cb in _genreCheckBoxes)
                 if (bookGenreIds.Contains((int)cb.Tag))
@@ -58,6 +58,7 @@ namespace ReadWriteNoRush.Views
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
+
             string title = TxtTitle.Text.Trim();
             string desc = TxtDesc.Text.Trim();
             string content = TxtContent.Text.Trim();
@@ -83,7 +84,9 @@ namespace ReadWriteNoRush.Views
                     AuthorId = AppSession.CurrentUser.UserId,
                     IsFrozen = false,
                     CreatedAt = System.DateTime.Now
+
                 };
+                newBook.CoverPath = TxtCover.Text.Trim();
                 foreach (var g in selectedGenres)
                     newBook.Genres.Add(g);
 
@@ -92,6 +95,7 @@ namespace ReadWriteNoRush.Views
             }
             else
             {
+                _book.CoverPath = TxtCover.Text.Trim();
                 _book.Title = title;
                 _book.Description = desc;
                 _book.Content = content;
