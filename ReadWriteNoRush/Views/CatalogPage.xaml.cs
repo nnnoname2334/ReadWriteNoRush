@@ -169,6 +169,9 @@ namespace ReadWriteNoRush.Views
 
                 card.Child = sp; // <- теперь в самом конце
                 BooksPanel.Children.Add(card);
+
+                btnAdd.Visibility = AppSession.IsFrozen ? Visibility.Collapsed : Visibility.Visible;
+
             }
         }
 

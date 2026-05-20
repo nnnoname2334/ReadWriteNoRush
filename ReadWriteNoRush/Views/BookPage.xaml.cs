@@ -36,7 +36,6 @@ namespace ReadWriteNoRush.Views
             TxtGenres.Text = "Жанры: " + string.Join(", ", _book.Genres.Select(g => g.GenreName));
             TxtContent.Text = _book.Content;
             TxtDesc.Text = _book.Description;
-            // Загрузка обложки
             try
             {
                 if (!string.IsNullOrEmpty(_book.CoverPath))
@@ -73,6 +72,14 @@ namespace ReadWriteNoRush.Views
 
             PanelAddReview.Visibility = (alreadyReviewed || isAuthorOrAdmin)
                 ? Visibility.Collapsed : Visibility.Visible;
+            // Ограничения для замороженного аккаунта
+
+            if (AppSession.IsFrozen)
+            {
+                PanelAddReview.Visibility = Visibility.Collapsed;
+                BtnComplainBook.Visibility = Visibility.Collapsed;
+                BtnComplainAuthor.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void LoadReviews()

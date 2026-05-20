@@ -30,8 +30,7 @@ namespace ReadWriteNoRush.Views
             TxtRole.Text = user.Roles?.RoleName ?? "—";
 
             // Кнопка заявки — только для читателя
-            BtnApplyAuthor.Visibility = AppSession.IsReader
-                ? Visibility.Visible : Visibility.Collapsed;
+            BtnApplyAuthor.Visibility = AppSession.IsReader ? Visibility.Visible : Visibility.Collapsed;
 
             // Заморозка
             if (user.IsFrozen)
